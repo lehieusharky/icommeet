@@ -52,147 +52,123 @@ class MCUMeetingRepositoryImpl: MCUMeetingRepository {
         }
     }
 
-    func getMCUMeetingID(_ getMCUMeetingIDEntity: GetMCUMeetingIDRequest) async throws -> Result<GetMCUMeetingIDModel?, XpertError> {
+    func getMCUMeetingID(_ getMCUMeetingIDEntity: GetMCUMeetingIDRequest) async -> GetMCUMeetingIDEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetMCUMeetingIDEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getMCUMeetingID(getMCUMeetingIDEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetMCUMeetingIDEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetMCUMeetingIDEntity(error)
         }
     }
 
-    func createMCUMeeting(_ mcuMeetingCreationDEntity: MCUMeetingCreationRequest) async throws -> Result<MCUMeetingCreationModel?, XpertError> {
+    func createMCUMeeting(_ mcuMeetingCreationDEntity: MCUMeetingCreationRequest) async -> MCUMeetingCreationEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return MCUMeetingCreationEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.createMCUMeeting(mcuMeetingCreationDEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return MCUMeetingCreationEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return MCUMeetingCreationEntity(error)
         }
     }
 
-    func editMCUMeeting(_ editMCUMeetingEntity: EditMCUMeetingRequest) async throws -> Result<EditMCUMeetingModel?, XpertError> {
+    func editMCUMeeting(_ editMCUMeetingEntity: EditMCUMeetingRequest) async -> EditMCUMeetingEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return EditMCUMeetingEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.editMCUMeeting(editMCUMeetingEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return EditMCUMeetingEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return EditMCUMeetingEntity(error)
         }
     }
 
-    func extendOnGoingMCUMeetingTime(_ extendOnGoingMCUMeetingTimeEntity: ExtendOnGoingMCUMeetingTimeRequest) async throws -> Result<ExtendOnGoingMCUMeetingTimeModel?, XpertError> {
+    func extendOnGoingMCUMeetingTime(_ extendOnGoingMCUMeetingTimeEntity: ExtendOnGoingMCUMeetingTimeRequest) async -> ExtendOnGoingMCUMeetingTimeEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return ExtendOnGoingMCUMeetingTimeEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.extendOnGoingMCUMeetingTime(extendOnGoingMCUMeetingTimeEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return ExtendOnGoingMCUMeetingTimeEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return ExtendOnGoingMCUMeetingTimeEntity(error)
         }
     }
 
-    func cancelMeeting(_ cancelMeetingEntity: CancelMeetingRequest) async throws -> Result<CancelMeetingModel?, XpertError> {
+    func cancelMeeting(_ cancelMeetingEntity: CancelMeetingRequest) async -> CancelMeetingEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return CancelMeetingEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.cancelMeeting(cancelMeetingEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return CancelMeetingEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return CancelMeetingEntity(error)
         }
     }
 
-    func deleteMeeting(_ deleteMeetingEntity: DeleteMeetingRequest) async throws -> Result<DeleteMeetingModel?, XpertError> {
+    func deleteMeeting(_ deleteMeetingEntity: DeleteMeetingRequest) async -> DeleteMeetingEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return DeleteMeetingEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.deleteMeeting(deleteMeetingEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return DeleteMeetingEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return DeleteMeetingEntity(error)
         }
     }
 
-    func inviteUserDuringMeeting(_ inviteUserDuringMeetingEntity: InviteUserDuringMeetingRequest) async throws -> Result<InviteUserDuringMeetingModel?, XpertError> {
+    func inviteUserDuringMeeting(_ inviteUserDuringMeetingEntity: InviteUserDuringMeetingRequest) async -> InviteUserDuringMeetingEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return InviteUserDuringMeetingEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.inviteUserDuringMeeting(inviteUserDuringMeetingEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return InviteUserDuringMeetingEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return InviteUserDuringMeetingEntity(error)
         }
     }
 
-    func checkOnGoingMeetingState(_ checkOnGoingMeetingStateEntity: CheckOnGoingMeetingStateRequest) async throws -> Result<CheckOnGoingMeetingStateModel?, XpertError> {
+    func checkOnGoingMeetingState(_ checkOnGoingMeetingStateEntity: CheckOnGoingMeetingStateRequest) async -> CheckOnGoingMeetingStateEntity {
         guard let dataSource = dataSource as? MCUMeetingDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return CheckOnGoingMeetingStateEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.checkOnGoingMeetingState(checkOnGoingMeetingStateEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return CheckOnGoingMeetingStateEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return CheckOnGoingMeetingStateEntity(error)
         }
     }
 }
