@@ -14,26 +14,29 @@ class AuthRepositoryImpl: AuthRepository {
         self.dataSource = dataSource
     }
     
-    func loginWith(_ loginEntity: LoginRequest) async throws -> Result<LoginModel, XpertError> {
+    func loginWith(_ loginEntity: LoginRequest) async -> LoginEntity {
         guard let dataSource = dataSource as? AuthDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return LoginEntity(XpertError(.error_100))
         }
-        return try await dataSource.authLogin(loginEntity)
+
+        // TODO
+        let loginModel = try await dataSource.authLogin(loginEntity);
+        return  LoginEntity(loginModel)
     }
     
-    func logout(_ logoutEntity: LogoutRequest,_ completion: @escaping (Result<LogoutModel, XpertError>) -> Void) {
+    func logout(_ logoutEntity: LogoutRequest,_ completion: @escaping (LogoutEntity) -> Void) {
         guard let dataSource = dataSource as? AuthDataSourceAPIImpl else {
-            return completion(.failure(XpertError(.error_100)))
+            return completion(LogoutEntity(XpertError(.error_100)))
         }
         
         dataSource.authLogout(logoutEntity) { model, success  in
             if success,
                let model = model {
-                completion(.success(model))
+                completion(LogoutEntity(model))
                 return
             }
             
-            completion(.failure(XpertError(.error_100)))
+            completion(LogoutEntity(XpertError(.error_100)))
         }
     }
 }

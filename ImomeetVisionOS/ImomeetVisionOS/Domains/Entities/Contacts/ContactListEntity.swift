@@ -7,10 +7,20 @@
 
 import Foundation
 
-class ContactListEntity {
+protocol ContactListStateEntity {}
+
+class ContactListEntityFailure: ContactListStateEntity {
+    private(set) var error: XpertError?
+    
+    init(error: XpertError? = nil) {
+        self.error = error
+    }
+}
+class ContactListEntity : ContactListStateEntity {
     private(set) var model: ContactListModel
     
     init(_ model: ContactListModel) {
         self.model = model
     }
+    
 }

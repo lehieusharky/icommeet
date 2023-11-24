@@ -10,6 +10,6 @@ import Foundation
 protocol AuthRepository {
     var dataSource: AuthDataSource? { get }
     
-    func loginWith(_ loginEntity: LoginRequest) async throws -> Result<LoginModel, XpertError>
-    func logout(_ logoutEntity: LogoutRequest,_ completion: @escaping (Result<LogoutModel, XpertError>) -> Void)
+    func loginWith(_ loginEntity: LoginRequest) async -> LoginEntity
+    func logout(_ logoutEntity: LogoutRequest,_ completion: @escaping (LogoutEntity) -> Void)
 }

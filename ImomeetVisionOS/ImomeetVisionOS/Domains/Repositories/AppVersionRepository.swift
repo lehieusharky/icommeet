@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AppVersionRepository {
-    func checkAppVersion(_ checkAppVersionEntity: CheckAppVersionRequest) async throws -> Result<CheckAppVersionModel?, XpertError>
+    func checkAppVersion(_ checkAppVersionEntity: CheckAppVersionRequest) async -> CheckAppVersionEntity
 
 }
 

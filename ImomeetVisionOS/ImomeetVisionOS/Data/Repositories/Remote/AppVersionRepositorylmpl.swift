@@ -15,7 +15,7 @@ class AppVersionRepositoryImpl: AppVersionRepository {
         self.dataSource = dataSource
     }
     
-    func checkAppVersion(_ checkAppVersionEntity: CheckAppVersionRequest) async throws -> Result<CheckAppVersionModel?, XpertError> {
+    func checkAppVersion(_ checkAppVersionEntity: CheckAppVersionRequest) async -> CheckAppVersionEntity {
         guard let dataSource = dataSource as? AppVersionDataSourceAPIImpl else {
             return .failure(XpertError(.error_100))
         }
@@ -25,11 +25,12 @@ class AppVersionRepositoryImpl: AppVersionRepository {
         switch results {
         case .success(let model):
             guard let model = model else {
+                // TODO
                 return .success(nil)
             }
-            return .success(model)
+            return CheckAppVersionEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return CheckAppVersionEntity(error)
         }
     }
 }
