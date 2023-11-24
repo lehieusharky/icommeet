@@ -8,8 +8,8 @@
 import Foundation
 
 protocol UserGroupRepository {
-    func getUserGroupTree(_ getUserGroupTreeEntity: GetUserGroupTreeRequest) async throws -> Result<GetUserGroupTreeModel?, XpertError>
-    func getUserGroupTree2(_ getUserGroupTree2Entity: GetUserGroupTree2Request) async throws -> Result<GetUserGroupTree2Model?, XpertError>
-    func getGroupUser(_ getGroupUserEntity: GetGroupUserRequest) async throws -> Result<GetGroupUserModel?, XpertError>
+    func getUserGroupTree(_ getUserGroupTreeEntity: GetUserGroupTreeRequest) async -> GetUserGroupTreeEntity
+    func getUserGroupTree2(_ getUserGroupTree2Entity: GetUserGroupTree2Request) async -> GetUserGroupTree2Entity
+    func getGroupUser(_ getGroupUserEntity: GetGroupUserRequest) async -> GetGroupUserEntity
 
 }

@@ -17,17 +17,13 @@ class AppVersionRepositoryImpl: AppVersionRepository {
     
     func checkAppVersion(_ checkAppVersionEntity: CheckAppVersionRequest) async -> CheckAppVersionEntity {
         guard let dataSource = dataSource as? AppVersionDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return CheckAppVersionEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.checkAppVersion(checkAppVersionEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                // TODO
-                return .success(nil)
-            }
             return CheckAppVersionEntity(model)
         case .failure(let error):
             return CheckAppVersionEntity(error)

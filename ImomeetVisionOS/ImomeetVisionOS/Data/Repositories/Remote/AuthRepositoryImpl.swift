@@ -19,9 +19,15 @@ class AuthRepositoryImpl: AuthRepository {
             return LoginEntity(XpertError(.error_100))
         }
 
-        // TODO
-        let loginModel = try await dataSource.authLogin(loginEntity);
-        return  LoginEntity(loginModel)
+        dataSource.authLogin(loginEntity) { model, success  in
+            if success,
+               let model = model {
+                completion(LoginEntity(model))
+                return
+            }
+            
+            completion(LoginEntity(XpertError(.error_100)))
+        }
     }
     
     func logout(_ logoutEntity: LogoutRequest,_ completion: @escaping (LogoutEntity) -> Void) {

@@ -28,16 +28,13 @@ class ContactRepositoryImpl: ContactRepository {
     
     func getContactInfo(_ contactInfoEntity: ContactInfoRequest) async -> ContactInfoStateEntity {
         guard let dataSource = dataSource as? ContactDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return ContactInfoEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getContactInfo(contactInfoEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
             return ContactInfoEntity(model)
         case .failure(let error):
             return ContactInfoEntityFailure(error)
@@ -46,16 +43,13 @@ class ContactRepositoryImpl: ContactRepository {
 
     func removeContact(_ removeContactEntity: RemoveContactRequest) async -> RemoveContactStateEntity {
         guard let dataSource = dataSource as? ContactDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return RemoveContactEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.removeContact(removeContactEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
             return RemoveContactEntity(model)
         case .failure(let error):
             return RemoveContactEntityFailure(error)
@@ -65,16 +59,13 @@ class ContactRepositoryImpl: ContactRepository {
 
     func addContact(_ addContactEntity: AddContactRequest) async -> AddContactStateEntity {
         guard let dataSource = dataSource as? ContactDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return AddContactEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.addContact(addContactEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
             return AddContactEntity(model)
         case .failure(let error):
             return AddContactEntityFailure(error)
@@ -83,16 +74,13 @@ class ContactRepositoryImpl: ContactRepository {
 
     func changeContactGroupName(_ changeContactGroupNameEntity: ChangeContactGroupNameRequest) async -> ChangeContactGroupNameStateEntity {
         guard let dataSource = dataSource as? ContactDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return ChangeContactGroupNameEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.changeContactGroupName(changeContactGroupNameEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
             return ChangeContactGroupNameEntity(model)
         case .failure(let error):
             return ChangeContactGroupNameEntityFailure(error)
@@ -101,17 +89,13 @@ class ContactRepositoryImpl: ContactRepository {
 
     func removeContactGroup(_ removeContactGroupEntity: RemoveContactGroupRequest) async -> RemoveContactGroupStateEntity {
          guard let dataSource = dataSource as? ContactDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return RemoveContactGroupEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.removeContactGroup(removeContactGroupEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                // TODO
-                return .success(nil)
-            }
             return RemoveContactGroupEntity(model)
         case .failure(let error):
             return RemoveContactGroupEntityFailure(error)

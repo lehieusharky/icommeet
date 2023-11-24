@@ -8,6 +8,6 @@
 import Foundation
 
 protocol TranslationRepository {
-    func inputTranslation(_ inputTranslationEntity: InputTranslationRequest) async throws -> Result<InputTranslationModel?, XpertError>
+    func inputTranslation(_ inputTranslationEntity: InputTranslationRequest) async -> InputTranslationEntity
 
 }

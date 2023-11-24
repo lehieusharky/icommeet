@@ -15,93 +15,78 @@ class UserRepositoryImpl: UserRepository {
         self.dataSource = dataSource
     }
     
-    func getUserBasicInfo(_ getUserBasicInfoEntity: GetUserBasicInfoRequest) async throws -> Result<GetUserBasicInfoModel?, XpertError> {
+    func getUserBasicInfo(_ getUserBasicInfoEntity: GetUserBasicInfoRequest) async -> GetUserBasicInfoEntity {
         guard let dataSource = dataSource as? UserDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetUserBasicInfoEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getUserBasicInfo(getUserBasicInfoEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetUserBasicInfoEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetUserBasicInfoEntity(error)
         }
     }
 
-    func updateUserBasicInfo(_ updateUserBasicInfoEntity: UpdateUserBasicInfoRequest) async throws -> Result<UpdateUserBasicInfoModel?, XpertError> {
+    func updateUserBasicInfo(_ updateUserBasicInfoEntity: UpdateUserBasicInfoRequest) async -> UpdateUserBasicInfoEntity {
         guard let dataSource = dataSource as? UserDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return UpdateUserBasicInfoEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.updateUserBasicInfo(updateUserBasicInfoEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return UpdateUserBasicInfoEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return UpdateUserBasicInfoEntity(error)
         }
     }
 
-    func changeUserPassword(_ changeUserPasswordEntity: ChangeUserPasswordRequest) async throws -> Result<ChangeUserPasswordModel?, XpertError> {
+    func changeUserPassword(_ changeUserPasswordEntity: ChangeUserPasswordRequest) async -> ChangeUserPasswordEntity {
         guard let dataSource = dataSource as? UserDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return ChangeUserPasswordEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.changeUserPassword(changeUserPasswordEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return ChangeUserPasswordEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return ChangeUserPasswordEntity(error)
         }
     }
 
-    func getUserList(_ getUserListEntity: GetUserListRequest) async throws -> Result<GetUserListModel?, XpertError> {
+    func getUserList(_ getUserListEntity: GetUserListRequest) async -> GetUserListEntity {
          guard let dataSource = dataSource as? UserDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetUserListEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getUserList(getUserListEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetUserListEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetUserListEntity(error)
         }
     }
 
-    func updateRemoveUserAvatar(_ updateRemoveUserAvatarEntity: UpdateRemoveUserAvatarRequest) async throws -> Result<UpdateRemoveUserAvatarModel?, XpertError> {
+    func updateRemoveUserAvatar(_ updateRemoveUserAvatarEntity: UpdateRemoveUserAvatarRequest) async -> UpdateRemoveUserAvatarEntity {
         guard let dataSource = dataSource as? UserDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return UpdateRemoveUserAvatarEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.updateRemoveUserAvatar(updateRemoveUserAvatarEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return UpdateRemoveUserAvatarEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return UpdateRemoveUserAvatarEntity(error)
         }
     }
 }

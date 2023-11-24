@@ -15,57 +15,48 @@ class UserGroupRepositoryImpl: UserGroupRepository {
         self.dataSource = dataSource
     }
     
-    func getUserGroupTree(_ getUserGroupTreeEntity: GetUserGroupTreeRequest) async throws -> Result<GetUserGroupTreeModel?, XpertError> {
+    func getUserGroupTree(_ getUserGroupTreeEntity: GetUserGroupTreeRequest) async -> GetUserGroupTreeEntity {
         guard let dataSource = dataSource as? UserGroupDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetUserGroupTreeEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getUserGroupTree(getUserGroupTreeEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetUserGroupTreeEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetUserGroupTreeEntity(error)
         }
     }
 
-    func getUserGroupTree2(_ getUserGroupTree2Entity: GetUserGroupTree2Request) async throws -> Result<GetUserGroupTree2Model?, XpertError> {
+    func getUserGroupTree2(_ getUserGroupTree2Entity: GetUserGroupTree2Request) async -> GetUserGroupTree2Entity {
         guard let dataSource = dataSource as? UserGroupDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetUserGroupTree2Entity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getUserGroupTree2(getUserGroupTree2Entity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetUserGroupTree2Entity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetUserGroupTree2Entity(error)
         }
     }
 
-    func getGroupUser(_ getGroupUserEntity: GetGroupUserRequest) async throws -> Result<GetGroupUserModel?, XpertError> {
+    func getGroupUser(_ getGroupUserEntity: GetGroupUserRequest) async -> GetGroupUserEntity {
         guard let dataSource = dataSource as? UserGroupDataSourceAPIImpl else {
-            return .failure(XpertError(.error_100))
+            return GetGroupUserEntity(XpertError(.error_100))
         }
         
         let results = try await dataSource.getGroupUser(getGroupUserEntity)
         
         switch results {
         case .success(let model):
-            guard let model = model else {
-                return .success(nil)
-            }
-            return .success(model)
+            return GetGroupUserEntity(model)
         case .failure(let error):
-            return .failure(error)
+            return GetGroupUserEntity(error)
         }
     }
 
