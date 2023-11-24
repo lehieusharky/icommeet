@@ -66,16 +66,9 @@ class ContactDataSourceAPIImpl: ContactDataSource {
         guard let url = URL(string: contactInfoPath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -101,17 +94,9 @@ class ContactDataSourceAPIImpl: ContactDataSource {
         guard let url = URL(string: removeContactPath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "contact": request.contact,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -138,20 +123,9 @@ class ContactDataSourceAPIImpl: ContactDataSource {
         guard let url = URL(string: addContactPath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "contact": request.contact,
-            "contact_alias": request.contactAlias,
-            "uid_type": request.uidType,
-            "group": request.group,
-            "group_id": request.groupId,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -178,17 +152,9 @@ class ContactDataSourceAPIImpl: ContactDataSource {
         guard let url = URL(string: changeContactGroupNamePath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "group": request.group,
-            "new_group": request.newGroup,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -214,16 +180,9 @@ class ContactDataSourceAPIImpl: ContactDataSource {
         guard let url = URL(string: removeContactGroupPath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "group": request.group,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in

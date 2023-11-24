@@ -28,4 +28,18 @@ class GetMeetingInfoRequest {
         self.userSecret = userSecret
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "meeting_id": request.meetingId,
+            "meeting_password": request.meetingPassword,
+            "vMeetId": request.vMeetId,
+            "user_secret": request.userSecret,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+    
 }

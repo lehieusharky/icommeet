@@ -22,4 +22,17 @@ class GetMCUMeetingIDRequest {
         self.userId = userId
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "meeting_id": request.meetingId,
+            "user_id": request.userId,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+     
 }

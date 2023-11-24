@@ -49,4 +49,26 @@ class EditMCUMeetingRequest {
         self.vmeetidList = vmeetidList
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "act": request.act,
+            "meeting_id": request.meetingId,
+            "topic": request.topic,
+            "description": request.description,
+            "duration": request.duration,
+            "timezone": request.timezone,
+            "start_now": request.startNow,
+            "start_time": request.startTime,
+            "quit_on_chairman_left": request.quitOnChairmanLeft,
+            "user_list": request.userList,
+            "vmeetid_list": request.vmeetidList,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

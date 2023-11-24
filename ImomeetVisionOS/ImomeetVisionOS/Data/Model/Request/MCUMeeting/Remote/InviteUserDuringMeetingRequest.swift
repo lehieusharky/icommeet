@@ -37,4 +37,22 @@ class InviteUserDuringMeetingRequest {
         self.invitedMobilephone = invitedMobilephone
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "meeting_id": request.meetingId,
+            "user_id": request.userId,
+            "uid_type": request.uidType,
+            "user_secret": request.userSecret,
+            "invitee": request.invitee,
+            "invitee_type": request.inviteeType,
+            "invited_mobilephone": request.invitedMobilephone,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

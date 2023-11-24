@@ -34,4 +34,21 @@ class AddContactRequest {
         self.groupId = groupId
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "contact": request.contact,
+            "contact_alias": request.contactAlias,
+            "uid_type": request.uidType,
+            "group": request.group,
+            "group_id": request.groupId,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+     
 }

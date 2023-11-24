@@ -25,4 +25,18 @@ class ChangeContactGroupNameRequest {
         self.newGroup = newGroup
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "group": request.group,
+            "new_group": request.newGroup,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

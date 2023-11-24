@@ -70,4 +70,33 @@ class MCUMeetingCreationRequest {
         self.extra = extra
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "act": request.act,
+            "topic": request.topic,
+            "description": request.description,
+            "chairman": request.chairman,
+            "chairman_vmeetid": request.chairmanVmeetid,
+            "password": request.password,
+            "quit_on_chairman_left": request.quitOnChairmanLeft,
+            "duration": request.duration,
+            "timezone": request.timezone,
+            "start_now": request.startNow,
+            "start_time": request.startTime,
+            "send_sms": request.sendSms,
+            "user_list": request.userList,
+            "vmeetid_list": request.vmeetidList,
+            "force_create": request.forceCreate,
+            "allow_multiple": request.allowMultiple,
+            "no_video": request.noVideo,
+            "extra": request.extra,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

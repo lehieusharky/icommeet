@@ -68,17 +68,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "meeting_id": request.meetingId,
-            "meeting_password": request.meetingPassword,
-            "vMeetId": request.vMeetId,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -105,15 +96,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "meeting_id": request.meetingId,
-            "user_id": request.userId,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -140,31 +124,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "act": request.act,
-            "topic": request.topic,
-            "description": request.description,
-            "chairman": request.chairman,
-            "chairman_vmeetid": request.chairmanVmeetid,
-            "password": request.password,
-            "quit_on_chairman_left": request.quitOnChairmanLeft,
-            "duration": request.duration,
-            "timezone": request.timezone,
-            "start_now": request.startNow,
-            "start_time": request.startTime,
-            "send_sms": request.sendSms,
-            "user_list": request.userList,
-            "vmeetid_list": request.vmeetidList,
-            "force_create": request.forceCreate,
-            "allow_multiple": request.allowMultiple,
-            "no_video": request.noVideo,
-            "extra": request.extra,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -190,25 +151,9 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
         guard let url = URL(string: editMCUMeetingPath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "act": request.act,
-            "meeting_id": request.meetingId,
-            "topic": request.topic,
-            "description": request.description,
-            "duration": request.duration,
-            "timezone": request.timezone,
-            "start_now": request.startNow,
-            "start_time": request.startTime,
-            "quit_on_chairman_left": request.quitOnChairmanLeft,
-            "user_list": request.userList,
-            "vmeetid_list": request.vmeetidList,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -234,20 +179,9 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
         guard let url = URL(string: extendOnGoingMCUMeetingTimePath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "act": request.act,
-            "meeting_id": request.meetingId,
-            "add_time": request.addTime,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -274,18 +208,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "act": request.act,
-            "meeting_id": request.meetingId,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -312,18 +236,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "act": request.act,
-            "meeting_id": request.meetingId,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -350,20 +264,8 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "meeting_id": request.meetingId,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "invitee": request.invitee,
-            "invitee_type": request.inviteeType,
-            "invited_mobilephone": request.invitedMobilephone,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -389,16 +291,9 @@ class MCUMeetingDataSourceAPIImpl: MCUMeetingDataSource {
         guard let url = URL(string: checkOnGoingMeetingStatePath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in

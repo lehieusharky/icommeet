@@ -20,18 +20,8 @@ class AppVersionDataSourceAPIImpl: AppVersionDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "name": request.name,
-            "lang": request.lang,
-            "ver_major": request.verMajor,
-            "ver_minor": request.verMinor,
-            "ver_build": request.verBuild,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in

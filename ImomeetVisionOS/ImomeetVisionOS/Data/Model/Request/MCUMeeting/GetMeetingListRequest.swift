@@ -42,7 +42,7 @@ class GetMeetingListRequest {
         self.accessToken = accessToken
     }
     
-    private var toDict: [String: Any] {
+    var toDict: [String: Any] {
         let mulDict: [String: Any] = [
             "x": x,
             "vMeetId": vMeetId,

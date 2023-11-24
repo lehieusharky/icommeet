@@ -31,4 +31,20 @@ class CheckAppVersionRequest {
         self.verBuild = verBuild
         self.accessToken = accessToken
     }
+
+    
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "name": request.name,
+            "lang": request.lang,
+            "ver_major": request.verMajor,
+            "ver_minor": request.verMinor,
+            "ver_build": request.verBuild,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+    
 }

@@ -35,4 +35,21 @@ class ExtendOnGoingMCUMeetingTimeRequest {
         self.userSecret = userSecret
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "act": request.act,
+            "meeting_id": request.meetingId,
+            "add_time": request.addTime,
+            "user_id": request.userId,
+            "uid_type": request.uidType,
+            "user_secret": request.userSecret,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

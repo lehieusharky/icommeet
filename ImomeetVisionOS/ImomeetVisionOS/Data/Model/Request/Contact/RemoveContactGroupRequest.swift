@@ -22,4 +22,16 @@ class RemoveContactGroupRequest {
         self.group = group
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "group": request.group,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+    
 }

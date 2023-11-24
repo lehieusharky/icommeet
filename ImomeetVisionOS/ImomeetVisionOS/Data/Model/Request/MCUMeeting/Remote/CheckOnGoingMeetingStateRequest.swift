@@ -22,4 +22,15 @@ class CheckOnGoingMeetingStateRequest {
         self.uidType = uidType
         self.accessToken = accessToken
     }
+    
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "uid_type": request.uidType,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
 }
