@@ -1,0 +1,39 @@
+{
+    "category" : 0,
+    
+    "colorPalette" : {
+        "whiteColor": "#FFFFFF",
+        "blackColor": "#000000",
+        "lightGreen" : "#00B71F",
+        "lightRed": "#DA2B1F",
+        "lightBlue": "#2B87F2",
+        "gray1": "#3D4657",
+        "gray2": "#747B87",
+        "gray3" : "#AEB1B7",
+        "gray5": "#E3E3E9",
+        "gray6": "#F2F2F7",
+        "gray7": "#FAFAFC",
+    },
+    
+    "key-map" : {
+        "common": {
+            "dominant": "@lightBlue",
+            "green": "@lightGreen",
+            "red": "@lightRed",
+            "white": "@whiteColor",
+            "black": "@blackColor",
+            "gray1": "@gray1",
+            "gray2": "@gray2",
+            "gray3": "@gray3",
+            "gray4": "@gray4",
+            "gray5": "@gray5",
+            "gray6": "@gray6",
+        },
+        
+        "button": {
+            "deactive": "#787878",
+            "deactiveContent": "#C8C8C8",
+        }
+    }
+}
+

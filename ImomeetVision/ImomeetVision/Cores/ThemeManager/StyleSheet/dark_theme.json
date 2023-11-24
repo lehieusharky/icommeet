@@ -1,0 +1,21 @@
+{
+    "category" : 1,
+    
+    "colorPalette" : {
+        "whiteColor": "#FFFFFF",
+        "blackColor": "#000000",
+        "darkGreen" : "#00B71F",
+        "darkRed" : "#DA2B1F",
+        "darkBlue": "#2B87F2",
+    },
+    
+    "key-map" : {
+        "common": {
+            "dominant": "@darkBlue",
+            "green": "@darkGreen",
+            "red": "@darkRed",
+            "white": "@whiteColor",
+            "black": "@blackColor",
+        }
+    }
+}
