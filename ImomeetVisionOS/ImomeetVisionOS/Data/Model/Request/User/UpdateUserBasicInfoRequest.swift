@@ -58,4 +58,29 @@ class UpdateUserBasicInfoRequest {
         self.city = city
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "vMeetId" : request.vMeetId,
+            "uid_type" : request.uidType,
+            "secret" : request.secret,
+            "user_name" : request.userName,
+            "user_email" : request.userEmail,
+            "user_phone" : request.userPhone,
+            "user_mobile" : request.userMobile,
+            "user_title" : request.userTitle,
+            "dob" : request.dob,
+            "priority" : request.priority,
+            "gender" : request.gender,
+            "country" : request.country,
+            "state" : request.state,
+            "city" : request.city,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

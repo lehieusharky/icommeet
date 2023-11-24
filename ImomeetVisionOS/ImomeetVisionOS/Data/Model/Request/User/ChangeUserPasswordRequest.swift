@@ -26,4 +26,18 @@ class ChangeUserPasswordRequest {
         self.secret = secret
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "vMeetId" : request.vMeetId,
+            "uid_type" : request.uidType,
+            "secret" : request.secret,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

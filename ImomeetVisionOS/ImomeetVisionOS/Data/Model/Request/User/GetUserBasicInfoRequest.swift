@@ -22,4 +22,17 @@ class GetUserBasicInfoRequest {
         self.userSecret = userSecret
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "vMeetId": request.vMeetId,
+            "user_secret": request.userSecret,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

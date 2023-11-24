@@ -19,15 +19,8 @@ class TranslationDataSourceAPIImpl: TranslationDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "source": request.source,
-            "target": request.target,
-            "text": request.text,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in

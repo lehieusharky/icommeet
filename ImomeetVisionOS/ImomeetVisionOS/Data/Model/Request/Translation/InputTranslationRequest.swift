@@ -22,4 +22,15 @@ class InputTranslationRequest {
         self.target = target
         self.text = text
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "source": request.source,
+            "target": request.target,
+            "text": request.text,
+        ]
+        
+        return mulDict
+    }
 }

@@ -20,17 +20,9 @@ class UserGroupDataSourceAPIImpl: UserGroupDataSource {
         guard let url = URL(string: getUserGroupTreePath) else {
             return .failure(XpertError(.error_100))
         }
-
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -57,16 +49,9 @@ class UserGroupDataSourceAPIImpl: UserGroupDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "user_id": request.userId,
-            "uid_type": request.uidType,
-            "user_secret": request.userSecret,
-            "accessToken" : request.accessToken,
-        ]
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in
@@ -94,16 +79,8 @@ class UserGroupDataSourceAPIImpl: UserGroupDataSource {
             return .failure(XpertError(.error_100))
         }
 
-        let mulDict: [String: Any] = [
-            "x": request.x,
-            "group_id": request.groupId,
-            "size": request.size,
-            "from": request.from,
-            "accessToken" : request.accessToken,
-        ]
-        
         do {
-            let data = try JSONSerialization.data(withJSONObject: mulDict, options: [])
+            let data = try JSONSerialization.data(withJSONObject: request.toDict, options: [])
 
             let response: Result<Data, Error> = try await withCheckedThrowingContinuation { continuation in
                 CommonAPI.requestAPI(url, parameters: data) { results in

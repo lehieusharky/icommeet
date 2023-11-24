@@ -25,4 +25,18 @@ class GetUserGroupTreeRequest {
         self.userSecret = userSecret
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "uid_type": request.uidType,
+            "user_secret": request.userSecret,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

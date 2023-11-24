@@ -25,4 +25,18 @@ class GetGroupUserRequest {
         self.from = from
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "group_id": request.groupId,
+            "size": request.size,
+            "from": request.from,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

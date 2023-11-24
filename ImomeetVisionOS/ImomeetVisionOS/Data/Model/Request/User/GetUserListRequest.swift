@@ -28,4 +28,19 @@ class GetUserListRequest {
         self.filterNoEmail = filterNoEmail
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "from": request.from,
+            "n_return": request.nReturn,
+            "search": request.search,
+            "filter_no_email": request.filterNoEmail,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+    
 }

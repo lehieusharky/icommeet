@@ -28,4 +28,20 @@ class UpdateRemoveUserAvatarRequest {
         self.userPhoto = userPhoto
         self.accessToken = accessToken
     }
+
+    var toDict: [String: Any] {
+        let mulDict: [String: Any] = [
+            "x": request.x,
+            "user_id": request.userId,
+            "user_secret": request.userSecret,
+            "act": request.act,
+            "user_photo": request.userPhoto,
+            "accessToken" : request.accessToken,
+        ]
+        
+        return mulDict
+    }
+
+
+    
 }
